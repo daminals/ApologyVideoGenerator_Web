@@ -5,7 +5,7 @@
 import gtts
 from moviepy.editor import *
 from moviepy.audio.fx.volumex import volumex
-import os, random, ffmpy, asyncio
+import os, random, ffmpy
 
 # TODO: add subtitles 🥺😳
 # TODO: Organize different steps into separate functions (ex: tts to tts function)
@@ -58,6 +58,7 @@ def gen_ID(char):
     return ID
 
 def clutter():
+    return
     for i in os.listdir('Temp-Files'):
         if not i=='.gitkeep':
             os.remove('Temp-Files/' + i)
@@ -71,22 +72,17 @@ def compression(input_name, output_name):
     ff.run()
 
 
-async def main(bool_inp,ID,apolo=''):
+def main(bool_inp,ID,apolo=''):
     if bool_inp:
         reason = apolo
     else:
         reason = input('Why are you apologizing? ')
-    Intro = random.choice(apology_intros)
-    Middle_part = f".  I am deeply and truly sorry for {reason.lower()}. It was wrong, disgraceful, and I promise it will never happen again,  .   {reason.lower()} {random.choice(wrongness_list)}. . .  {random.choice(middle)}"
-    Conclusion = f' {random.choice(thank_u)}. {random.choice(challenge)} {random.choice(bs)}. I love each of you guys so   so much. Thank you, and Don\'t forget to SMASH that like button and subscribe for more content!       .    '
-    script = Intro + Middle_part + Conclusion
+    script = random.choice(apology_intros)
+    script += f".  I am deeply and truly sorry for {reason.lower()}. It was wrong, disgraceful, and I promise it will never happen again,  .   {reason.lower()} {random.choice(wrongness_list)}. . .  {random.choice(middle)}"
+    script += f' {random.choice(thank_u)}. {random.choice(challenge)} {random.choice(bs)}. I love each of you guys so   so much. Thank you, and Don\'t forget to SMASH that like button and subscribe for more content!       .    '
     print('Processing audio...')
-    
-    #ttsEngine = pyttsx3.init()
-    #ttsEngine.save_to_file(script, 'Assets/audio.aac')
-    #ttsEngine.runAndWait()
+        
     audio = gtts.gTTS(script)
-
     audio.save('Assets/audio.aac')
 
     audioClip = AudioFileClip("Assets/audio.aac")
@@ -121,7 +117,7 @@ async def main(bool_inp,ID,apolo=''):
     final_clip = concatenate_videoclips([clip1, clip2, clip3])
     final_clip = final_clip.subclip(0, audioClip.duration)
 
-    async def Process(final_clip, ID, NewaudioClip):
+    def Process(final_clip, ID, NewaudioClip):
         try:
             final_clip.set_audio(NewaudioClip).write_videofile("Temp-Files/apology" + ID + ".mov", codec="libx264",
                                                                audio_codec='aac', audio=True,
@@ -136,10 +132,10 @@ async def main(bool_inp,ID,apolo=''):
 
         except Exception as e:
             print(e)
-            await Process(final_clip, ID, NewaudioClip)
+            Process(final_clip, ID, NewaudioClip)
 
     try:
-        await Process(final_clip, ID, NewaudioClip)
+        Process(final_clip, ID, NewaudioClip)
     except Exception as e:
         print(e)
         clutter()
@@ -150,14 +146,14 @@ async def main(bool_inp,ID,apolo=''):
         compression("Temp-Files/apology" + ID + ".mov", "Finished/apology" + ID + ".mp4")
     except Exception as e:
         print(e)
-    os.remove("Temp-Files/apology" + ID + ".mov")
     print('Video compressed...')
 
     final_clip.close()
     os.remove('Assets/audio.aac')
     clutter()
+    print("\nCompleted")
 
 
 if __name__ == '__main__':
     ID = gen_ID(4)
-    asyncio.run(main(False,ID))
+    fire.Fire()
