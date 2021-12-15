@@ -1,7 +1,7 @@
-![github repo badge: Language](https://img.shields.io/badge/Language-Python-181717?color=blue)  ![github repo badge: Language](https://img.shields.io/badge/Language-Bash-181717?color=green)  ![github repo badge: Powered By](https://img.shields.io/badge/Powered%20by-FFMPEG-181717?color=Green)  ![github repo badge: Powered By](https://img.shields.io/badge/Powered%20by-gTTS-181717?color=red)  ![github repo badge: Hosted on](https://img.shields.io/badge/Hosted%20on-Heroku-181717?color=purple) ![github repo badge: Powered by](https://img.shields.io/badge/Powered%20by-Discord-181717?color=purple)
+![github repo badge: Language](https://img.shields.io/badge/Language-Python-181717?color=blue)  ![github repo badge: Language](https://img.shields.io/badge/Language-Bash-181717?color=green)  ![github repo badge: Powered By](https://img.shields.io/badge/Powered%20by-FFMPEG-181717?color=Green)  ![github repo badge: Powered By](https://img.shields.io/badge/Powered%20by-gTTS-181717?color=red)  ![github repo badge: Built With](https://img.shields.io/badge/Built%20With-React-181717?color=blue)
 # ApologyVideoGenerator
 
-_This repo is the discord bot version, currently hosted on heroku, the GUI app version can be found [here](https://github.com/daminals/ApologyVideoGenerator/tree/MacApp)_
+_This repo is the react web app version, the GUI app version can be found [here](https://github.com/daminals/ApologyVideoGenerator/tree/MacApp)_
 
 A problem our generation faces is the need to apologize for the horrible things we have done.
 Youtube sensations do so many horrible things, and apologize in such a generic and uniform way, the apology video has become its own 'unique' genre (I say 'unique' because these videos are all practically the same)
@@ -12,7 +12,7 @@ To that end, this program aims to automate the creation of Apology videos, and i
 
 [![](https://res.cloudinary.com/marcomontalbano/image/upload/v1594592001/video_to_markdown/images/youtube--Cjb45G58kk8-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/Cjb45G58kk8 "")
 
-# Discord Bot
+# React and Flask app
 
 Attaching the generator to a discord bot via heroku server was difficult, but applying the FFmpeg buildpack and google's text to speech API. The discord API routes function calls within discord to the main generator application, runs it, and returns the desired output
 
