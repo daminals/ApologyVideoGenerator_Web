@@ -2,7 +2,7 @@ import React from 'react';
 
 const title="Apology Video Generator";
 const description = "An easy way to apologize for what you may or may not have done wrong";
-const icon=""
+const icon="%PUBLIC_URL%/favicon.ico"
 const url="#"
 
 function MetaHead() {
