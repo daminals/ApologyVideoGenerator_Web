@@ -15,8 +15,8 @@ function App() {
     }).catch(error => {
       console.log(error)
     })
-
   }, [])
+  
   return (
     <div class="app">
         <MetaHead/> 
