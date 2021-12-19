@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
+import MetaHead from './MetaHead';
 import axios from 'axios'
 
 function App() {
@@ -15,16 +16,15 @@ function App() {
 
   }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <div>{getMessage.status === 200 ? 
-          <h3>{getMessage.data.message}</h3>
-          :
-          <h3>LOADING</h3>}</div>
-          <video width="320" height="240" controls>
-            <source src="movie.mp4" type="video/mp4"></source>
-            Your browser does not support the video tag.
-          </video>
+    <div class="app">
+        <MetaHead/> 
+      <header>
+        <div class="split left">
+            <h1 class="text-center"> What are you apologizing for?</h1>
+        </div>
+        <div class="split right">
+
+        </div>
       </header>
     </div>
   );
