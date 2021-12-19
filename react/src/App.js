@@ -1,7 +1,8 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import MetaHead from './MetaHead';
-import FormRequest from './FormRequest';
+import Right from './Right';
+import Left from './Left';
 import axios from 'axios'
 
 function App() {
@@ -19,14 +20,8 @@ function App() {
   return (
     <div class="app">
         <MetaHead/> 
-      <header>
-        <div class="split left text-center">
-            <h1> What are you apologizing for?</h1>
-            <FormRequest></FormRequest>
-        </div>
-        <div class="split right">
-        </div>
-      </header>
+        <Left></Left>
+        <Right></Right>
     </div>
   );
 }

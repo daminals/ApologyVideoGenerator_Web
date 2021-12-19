@@ -4,8 +4,8 @@ var sorryList = ["stealing candy from a baby","eating bacon on shabbat", "causin
 export default function FormRequest() {
     return (
         <form>
-            <input class="reason" placeholder={sorryList[Math.floor(Math.random()*sorryList.length)]} ></input>
-            <input type="submit" value="Build!"></input>
+            <input class="reason formH" placeholder={sorryList[Math.floor(Math.random()*sorryList.length)]} ></input>
+            <input class="btn-success formH" type="submit" value="Build!"></input>
         </form>
     )
 }
