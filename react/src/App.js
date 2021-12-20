@@ -20,8 +20,8 @@ function App() {
   return (
     <div class="app">
         <MetaHead/> 
-        <Left></Left>
         <Right></Right>
+        <Left></Left>
     </div>
   );
 }
