@@ -16,12 +16,14 @@ export default function Right(link) {
         
     return (
         <div class="split right">
-            <video width="320" height="240" autoplay>
-                {readGet.status === 200 ? 
-                <source src={link} type="video/mp4"/>
-                :
-                <source src={link} type="video/mp4"/>}
-                </video>
+            {readGet.status === 200 ? 
+            <video width="320" height="240" autoplay controls>
+                <source src={link.current.value} type="video/mp4"/>
+            </video>
+            :
+            <video width="320" height="240" autoplay loop>
+                <source src="/loading" type="video/mp4"/>
+            </video>}
         </div>
     )
 }

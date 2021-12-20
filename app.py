@@ -46,6 +46,10 @@ def avg_status(sor):
     print(f'Finished/apology{ID}.mp4')
     return send_file(f'Finished/apology{ID}.mp4')
 
+@app.route("/loading", methods=['GET'])
+def loading_screen():
+    return send_file('Assets/loading/ytload.mp4')
+
 @app.route("/clear")
 def dont_do_this_lol():
     for i in os.listdir('Finished'):
