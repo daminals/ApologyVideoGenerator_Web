@@ -3,7 +3,7 @@ import axios from 'axios';
 import Cookie from 'universal-cookie';
 
 var sorryList = ["stealing candy from a baby","eating bacon on shabbat", "causing the cuban missle crisis"];
-export default function FormRequest() {
+export default function FormRequest({setLink}) {
     const cookies = new Cookie();
     const sorRef = useRef();
 
@@ -21,7 +21,8 @@ export default function FormRequest() {
         if (name === '') return
         //axios.post("/generator/"+{name}+"/start");
         sorRef.current.value = null;
-        var cookie_id = cookieID()
+        var cookie_id = cookieID();
+        setLink("/generator/"+{name});
         cookies.set(cookie_id, name, {path: '/'});
     }
 

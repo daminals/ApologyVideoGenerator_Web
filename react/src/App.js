@@ -6,22 +6,17 @@ import Left from './Left';
 import axios from 'axios'
 
 function App() {
-  const [getMessage, setGetMessage] = useState({})
+  const [mainLink, setLink] = useState({})
 
-  useEffect(()=>{
-    axios.get('http://0.0.0.0:8080/api').then(response => {
-      console.log("SUCCESS", response)
-      setGetMessage(response)
-    }).catch(error => {
-      console.log(error)
-    })
-  }, [])
-  
+  function handleSetLink(Varlink){
+    setLink(Varlink);
+  }
+
   return (
     <div class="app">
         <MetaHead/> 
-        <Right></Right>
-        <Left></Left>
+        <Left setLink={handleSetLink}></Left>
+        <Right link="link"></Right>
     </div>
   );
 }
