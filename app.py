@@ -39,7 +39,6 @@ def avg_make(sor):
 @app.route("/generator/<sor>", methods=['GET','POST'])
 def avg_status(sor):
     if request.method == "POST":
-        time.sleep(0.5)
         future = executor.futures.pop(sor)
     return jsonify({'status': executor.futures._state(sor)})
 

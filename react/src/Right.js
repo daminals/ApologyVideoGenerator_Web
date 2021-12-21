@@ -28,6 +28,26 @@ export default function Right(link) {
     });
 
     useEffect(()=>{
+        let interval
+        const fetchData = async () => {
+            var checkLink = accessLink.substring(0, accessLink.length - 4)
+            try {
+                const response = await fetch(checkLink)
+                setFinished((response.data.status === "FINISHED"))
+            }catch (error) {
+                console.log("error", error)
+            }
+        }
+        fetchData()
+        interval = setInterval(() => {
+            fetchData()
+        }, 5*1000)
+        return() => {
+            clearInterval(interval)
+        }
+    }, [])
+
+    useEffect(()=>{
         axios.get(accessLink).then(response => {
           console.log("collecting video: ", response)
           setResponse(response);
