@@ -33,12 +33,12 @@ def serve(path):
 @app.route("/generator/<sor>/start", methods=["GET", "POST"])
 def avg_make(sor):
     ID = naming_convention(sor)
-    executor.submit_stored('avg', main, True,ID,sor)
+    executor.submit_stored('avg', main, True, ID, sor)
     return jsonify({'result':'success'})
 
 @app.route("/generator/<sor>", methods=['GET','POST'])
 def avg_status(sor):
-    if not executor.futures.done('calc_power'):
+    if not executor.futures.done('avg'):
         return jsonify({'status': executor.futures._state('avg')})
     future = executor.futures.pop('avg')
     ID = naming_convention(sor)

@@ -3,6 +3,7 @@
 # Daniel Kogan, 6/30/2020
 
 import gtts
+import fire
 from moviepy.editor import *
 from moviepy.audio.fx.volumex import volumex
 import os, random, ffmpy

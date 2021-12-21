@@ -11,7 +11,6 @@ export default function FormRequest({setLink}) {
         var ct = new Date();
         var [year,month,day,hour,min,sec] = [ct.getFullYear(),ct.getMonth(),ct.getDay(),ct.getHours(),ct.getMinutes(),ct.getSeconds()];
         var now = year.toString() + month.toString() + day.toString() + hour.toString() + min.toString() + sec.toString();
-        console.log(now)
         return now
       };
 

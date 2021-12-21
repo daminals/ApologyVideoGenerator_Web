@@ -17,7 +17,7 @@ export default function Right(link) {
         }).catch(error => {
           console.log(error)
         })
-      }, [])
+      }, [accessLink])
         
       return (
         <div className="split right">

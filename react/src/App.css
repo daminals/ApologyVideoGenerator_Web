@@ -33,6 +33,7 @@ body {
   margin-left: 5%;
   margin-top: 5%;
   border: 2px solid #cb9877;
+  border-radius: 5px;
 } @media only screen and (max-width: 600px) {
   .split {
     width: 100%;
