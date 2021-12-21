@@ -6,7 +6,7 @@ import Left from './Left';
 import axios from 'axios'
 
 function App() {
-  const [mainLink, setLink] = useState({})
+  const [mainLink, setLink] = useState("/generator/actingsus/get");
 
   function handleSetLink(Varlink){
     setLink(Varlink);
@@ -16,7 +16,7 @@ function App() {
     <div class="app">
         <MetaHead/> 
         <Left setLink={handleSetLink}></Left>
-        <Right link="link"></Right>
+        <Right link={mainLink}></Right>
     </div>
   );
 }

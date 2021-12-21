@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios'
 
 export default function Right(link) {
-    const readGet = {}
+    const [Response, setResponse] = useState({});
+    const accessLink = link["link"];
+    const vidRef = useRef();
 
     useEffect(()=>{
-        axios.get(link).then(response => {
-          console.log("collecting video", response)
-          readGet = response;
+        axios.get(accessLink).then(response => {
+          console.log("collecting video: ", response)
+          setResponse(response);
+          console.log(Response)
+          if (vidRef.current) {
+              vidRef.current.load()
+          }
         }).catch(error => {
           console.log(error)
         })
-    
       }, [])
         
-    return (
-        <div class="split right">
-            {readGet.status === 200 ? 
-            <video width="320" height="240" autoplay controls>
-                <source src={link.current.value} type="video/mp4"/>
-            </video>
-            :
-            <video width="320" height="240" autoplay loop>
-                <source src="/loading" type="video/mp4"/>
-            </video>}
+      return (
+        <div className="split right">
+          <video ref={vidRef} className="bideo" autoPlay controls={Response.status===200} loop={Response.status !== 200} muted={Response.status !== 200}>
+            <source src={Response.status === 200 ? accessLink : "/loading"}/>
+          </video>
         </div>
-    )
+      )
 }

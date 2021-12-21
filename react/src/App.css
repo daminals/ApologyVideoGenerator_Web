@@ -27,6 +27,11 @@ body {
   margin-top: 5%;
   margin-left: 15%;
   margin-right: 15%;
+} .bideo{
+  width: 70%;
+  margin-right: 15%;
+  margin-left: 15%;
+  margin-top: 5%;
 } @media only screen and (max-width: 600px) {
   .split {
     width: 100%;

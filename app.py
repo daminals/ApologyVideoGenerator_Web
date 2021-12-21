@@ -6,7 +6,6 @@
 from flask import Flask, send_from_directory, jsonify, send_file
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS #comment this on deployment
-from api.apiHandler import apiHandler
 from flask_executor import Executor
 # async
 import os, random, asyncio
@@ -46,6 +45,11 @@ def avg_status(sor):
     print(f'Finished/apology{ID}.mp4')
     return send_file(f'Finished/apology{ID}.mp4')
 
+@app.route("/generator/<sor>/get", methods=['GET','POST'])
+def avg_get(sor):
+    ID = naming_convention(sor)
+    return send_file(f'Finished/apology{ID}.mp4')
+
 @app.route("/loading", methods=['GET'])
 def loading_screen():
     return send_file('Assets/loading/ytload.mp4')
@@ -56,6 +60,3 @@ def dont_do_this_lol():
         if not i=='.gitkeep':
             os.remove('Finished/' + i)
     return "it is done"
-
-
-api.add_resource(apiHandler, '/api')

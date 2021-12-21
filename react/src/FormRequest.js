@@ -19,10 +19,10 @@ export default function FormRequest({setLink}) {
         e.preventDefault();
         const name = sorRef.current.value
         if (name === '') return
-        //axios.post("/generator/"+{name}+"/start");
+        axios.post("/generator/"+name+"/start");
         sorRef.current.value = null;
         var cookie_id = cookieID();
-        setLink("/generator/"+{name});
+        setLink("/generator/"+name+'/get');
         cookies.set(cookie_id, name, {path: '/'});
     }
 
