@@ -23,6 +23,7 @@ body {
   color: #573d2d;
   text-align: center;
   width: 70%;
+  height: 50%;
   padding: 10px;
   margin-top: 5%;
   margin-left: 15%;
@@ -34,6 +35,8 @@ body {
   margin-top: 5%;
   border: 2px solid #cb9877;
   border-radius: 5px;
+} .scale-small {
+  height: 99%;
 } @media only screen and (max-width: 600px) {
   .split {
     width: 100%;
