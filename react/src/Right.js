@@ -3,8 +3,29 @@ import axios from 'axios'
 
 export default function Right(link) {
     const [Response, setResponse] = useState({});
+    const [finished, setFinished] = useState(false);
     const accessLink = link["link"];
     const vidRef = useRef();
+
+    useEffect(() => {
+        if (!finished){
+            var checkLink = accessLink.substring(0, accessLink.length - 4)
+            axios.get(checkLink).then(response => {
+            console.log("collecting video: ", response)
+            if (response.data.status === "FINISHED") {
+                setFinished(true);
+                axios.post(checkLink, "stop")
+                .then(function(response) {
+                    console.log(response)
+                }).catch(function(error){
+                    console.log(error)
+                })
+            }
+            }).catch(error => {
+                console.log(error)
+            })
+        }
+    });
 
     useEffect(()=>{
         axios.get(accessLink).then(response => {
@@ -14,14 +35,15 @@ export default function Right(link) {
           if (vidRef.current) {
               vidRef.current.load()
           }
+          setFinished(false);
         }).catch(error => {
           console.log(error)
         })
-      }, [accessLink])
+      }, [finished])
         
       return (
         <div className="split right">
-          <video ref={vidRef} className="bideo" autoPlay controls={Response.status===200} loop={Response.status !== 200} muted={Response.status !== 200}>
+          <video ref={vidRef} className="bideo" autoPlay controls={Response.status === 200} loop={Response.status !== 200} muted={Response.status !== 200}>
             <source src={Response.status === 200 ? accessLink : "/loading"}/>
           </video>
         </div>

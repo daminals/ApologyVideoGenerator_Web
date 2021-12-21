@@ -33,17 +33,14 @@ def serve(path):
 @app.route("/generator/<sor>/start", methods=["GET", "POST"])
 def avg_make(sor):
     ID = naming_convention(sor)
-    executor.submit_stored('avg', main, True, ID, sor)
+    executor.submit_stored(sor, main, True, ID, sor)
     return jsonify({'result':'success'})
 
 @app.route("/generator/<sor>", methods=['GET','POST'])
 def avg_status(sor):
-    if not executor.futures.done('avg'):
-        return jsonify({'status': executor.futures._state('avg')})
-    future = executor.futures.pop('avg')
-    ID = naming_convention(sor)
-    print(f'Finished/apology{ID}.mp4')
-    return send_file(f'Finished/apology{ID}.mp4')
+    if request.method == "POST":
+        pass
+    return jsonify({'status': executor.futures._state(sor)})
 
 @app.route("/generator/<sor>/get", methods=['GET','POST'])
 def avg_get(sor):
