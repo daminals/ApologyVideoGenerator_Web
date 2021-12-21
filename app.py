@@ -20,6 +20,7 @@ api = Api(app)
 app.config['EXECUTOR_TYPE'] = 'thread'
 app.config['EXECUTOR_MAX_WORKERS'] = 5
 
+#TODO: get request to access naming convention
 def naming_convention(sor):
     conv = [" ","@","#","$","%","^",'*',"(",")","!","<",">","?","/","\\","\"","\'","~",":",";","`","=","+","{","}","|"]
     for i in conv:
@@ -40,7 +41,10 @@ def avg_make(sor):
 def avg_status(sor):
     if request.method == "POST":
         future = executor.futures.pop(sor)
-    return jsonify({'status': executor.futures._state(sor)})
+    return jsonify({
+        'resultStatus': 'SUCCESS',
+        'message': executor.futures._state(sor)
+        })
 
 @app.route("/generator/<sor>/get", methods=['GET','POST'])
 def avg_get(sor):

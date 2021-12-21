@@ -12,7 +12,7 @@ export default function Right(link) {
             var checkLink = accessLink.substring(0, accessLink.length - 4)
             axios.get(checkLink).then(response => {
             console.log("collecting video: ", response)
-            if (response.data.status === "FINISHED") {
+            if (response.data.message === "FINISHED") {
                 setFinished(true);
                 axios.post(checkLink, "stop")
                 .then(function(response) {
@@ -29,23 +29,36 @@ export default function Right(link) {
 
     useEffect(()=>{
         let interval
-        const fetchData = async () => {
-            var checkLink = accessLink.substring(0, accessLink.length - 4)
+        const fetchData = async (checkLink) => {
             try {
                 const response = await fetch(checkLink)
-                setFinished((response.data.status === "FINISHED"))
+                console.log(checkLink)
+                console.log(response)
+                console.log(finished)
+                const result = await response.json()
+                console.log(result)
+                if ((+result?.data?.message) === "FINISHED") {  // TODO: read get request output from flask to check when fin
+                    setFinished(true);
+                    // cancelled
+                    axios.post(checkLink, "stop")
+                    .then(function(response) {
+                        console.log(response)
+                    }).catch(function(error){
+                        console.log(error)
+                    })    
+                }
             }catch (error) {
                 console.log("error", error)
             }
         }
-        fetchData()
         interval = setInterval(() => {
-            fetchData()
-        }, 5*1000)
-        return() => {
+            var checkLink = link["link"].substring(0, link["link"].length - 4)
+            fetchData(checkLink)
+        }, 2 * 1000)
+        return () => {
             clearInterval(interval)
         }
-    }, [])
+    }, [accessLink])
 
     useEffect(()=>{
         axios.get(accessLink).then(response => {
