@@ -3,12 +3,12 @@
 # 12.14.2021
 
 # flask
-from flask import Flask, send_from_directory, jsonify, send_file
+from flask import Flask, send_from_directory, jsonify, send_file, redirect, request
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS #comment this on deployment
 from flask_executor import Executor
 # async
-import os, random, asyncio
+import os, random, asyncio, time
 # apology video generator
 from main import *
 
@@ -39,7 +39,8 @@ def avg_make(sor):
 @app.route("/generator/<sor>", methods=['GET','POST'])
 def avg_status(sor):
     if request.method == "POST":
-        pass
+        time.sleep(0.5)
+        future = executor.futures.pop(sor)
     return jsonify({'status': executor.futures._state(sor)})
 
 @app.route("/generator/<sor>/get", methods=['GET','POST'])
@@ -56,4 +57,5 @@ def dont_do_this_lol():
     for i in os.listdir('Finished'):
         if not i=='.gitkeep':
             os.remove('Finished/' + i)
-    return "it is done"
+    print("it is done")
+    return redirect("/")
