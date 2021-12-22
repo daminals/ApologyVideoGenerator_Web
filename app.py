@@ -53,11 +53,3 @@ def avg_get(sor):
 @app.route("/loading", methods=['GET'])
 def loading_screen():
     return send_file('Assets/loading/ytload.mp4')
-
-@app.route("/clear")
-def dont_do_this_lol():
-    for i in os.listdir('Finished'):
-        if not i=='.gitkeep':
-            os.remove('Finished/' + i)
-    print("it is done")
-    return redirect("/")
