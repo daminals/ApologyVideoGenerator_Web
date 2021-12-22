@@ -33,7 +33,7 @@ middle = ["I don't want your forgiveness, just the open space to be able to say 
           "The goal of my content is always to entertain, I never meant to let it get out of hand.  ",
           "The inhumane actions that I have done were truly despicable.  ",
           "It was once I lost one thousand insta followers that I understood the error of my ways.   "
-          f'When I lost my sponsorship with {random.choice(["Manscaped","NordVPN", "Among Us", "Audible"])}, I realized how wrong I was.  '
+          f'When I lost my sponsorship with {random.choice(["Manscaped","NordVPN", "Among Us", "Audible","skill share"])}, I realized how wrong I was.  '
           ]
 
 challenge = ["It's just been so hard for me since ",
