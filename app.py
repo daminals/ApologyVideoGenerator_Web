@@ -20,7 +20,6 @@ api = Api(app)
 app.config['EXECUTOR_TYPE'] = 'thread'
 app.config['EXECUTOR_MAX_WORKERS'] = 5
 
-#TODO: get request to access naming convention
 def naming_convention(sor):
     conv = [" ","@","#","$","%","^",'*',"(",")","!","<",">","?","/","\\","\"","\'","~",":",";","`","=","+","{","}","|"]
     for i in conv:

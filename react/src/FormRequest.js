@@ -14,15 +14,22 @@ export default function FormRequest({setLink}) {
         return now
       };
 
+    function js_naming_convention(name) {
+        //var conv = [" ","@","#","$","%","^",'*',"(",")","!","<",">","?","/","\\","\"","\'","~",":",";","`","=","+","{","}","|"]
+        var new_name = name.replace(/[^\w]/gi, "")
+        return new_name
+    }
+
     function pRqst(e){
         e.preventDefault();
         const name = sorRef.current.value
         if (name === '') return
+        var conv_name = js_naming_convention(name);
         axios.post("/generator/"+name+"/start");
         sorRef.current.value = null;
-        setLink("/generator/"+name+'/get');
+        setLink("/generator/"+conv_name+'/get');
         var cookie_id = cookieID();
-        cookies.set(cookie_id, name, {path: '/'});
+        cookies.set(cookie_id, conv_name, {path: '/'});
     }
 
     return (
