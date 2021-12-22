@@ -10,8 +10,6 @@ import os, random, ffmpy
 
 # TODO: add subtitles 🥺😳
 # TODO: Organize different steps into separate functions (ex: tts to tts function)
-# TODO: Make into a website and/or discord bot -- COMPLETED DISC BOT
-# TODO: DEBUG!!! It crashes and is unable to load the video every so often, and that must be fixed
 
 
 apology_intros = ["I made a severe and continuous lapse in my judgement, and I don’t expect to be forgiven. I’m "
