@@ -26,9 +26,9 @@ export default function Right(link) {
             try {
                 const response = await fetch(checkLink)
                 const result = await response.json()
-                console.log(checkLink)
+                //console.log(checkLink)
                 //console.log(result["message"])
-                console.log(finished)
+                //console.log(finished)
                 if ((result["message"]) === "FINISHED") { 
                     setFinished(true);
                     reloadVideo();
@@ -58,6 +58,7 @@ export default function Right(link) {
           <video ref={vidRef} className="bideo" autoPlay controls={Response.status === 200} loop={Response.status !== 200} muted={Response.status !== 200}>
             <source src={Response.status === 200 ? accessLink : "/loading"}/>
           </video>
+          {/* Add a text box saying loading or videoTitle */}
         </div>
       )
 }
