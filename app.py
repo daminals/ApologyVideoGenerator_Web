@@ -41,7 +41,7 @@ def avg_status(sor):
     if request.method == "POST":
         future = executor.futures.pop(sor)
     return jsonify({
-        'resultStatus': 'SUCCESS',
+        'result': 'success',
         'message': executor.futures._state(sor)
         })
 
