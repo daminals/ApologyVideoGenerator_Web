@@ -18,7 +18,7 @@ CORS(app) #comment this on deployment
 api = Api(app)
 
 app.config['EXECUTOR_TYPE'] = 'thread'
-app.config['EXECUTOR_MAX_WORKERS'] = 5
+app.config['EXECUTOR_MAX_WORKERS'] = 10
 
 def naming_convention(sor):
     conv = [" ","@","#","$","%","^",'*',"(",")","!","<",">","?","/","\\","\"","\'","~",":",";","`","=","+","{","}","|"]
