@@ -12,7 +12,6 @@ from script import *
 # TODO: add subtitles 🥺😳
 # TODO: Organize different steps into separate functions (ex: tts to tts function)
 
-
 def gen_ID(char):
     ID = ''
     for i in range(char):
