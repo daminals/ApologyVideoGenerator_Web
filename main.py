@@ -24,14 +24,12 @@ def clutter():
         if not i=='.gitkeep':
             os.remove('Temp-Files/' + i)
 
-
 def compression(input_name, output_name):
     inp = {input_name: None}
     outp = {output_name: f'-vcodec libx264 -crf 23'}
     ff = ffmpy.FFmpeg(inputs=inp, outputs=outp)
     print(ff.cmd)
     ff.run()
-
 
 def main(bool_inp,ID,apolo=''):
     if bool_inp:
