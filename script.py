@@ -47,3 +47,4 @@ def create_script(reason):
     script += f".  I am deeply and truly sorry for {reason.lower()}. It was wrong, disgraceful, and I promise it will never happen again,  .   {reason.lower()} {random.choice(wrongness_list)}. . .  {random.choice(middle)}"
     script += f' {random.choice(thank_u)}. {random.choice(challenge)} {random.choice(bs)}. I love each of you guys so   so much. Thank you, and Don\'t forget to SMASH that like button and subscribe for more content!       .    '
     return script
+# test
