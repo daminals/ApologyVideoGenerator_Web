@@ -30,7 +30,7 @@ def naming_convention(sor):
 def serve(path):
     return send_from_directory(app.static_folder,'index.html')
 
-@app.route("/generator/<sor>/start", methods=["GET", "POST"])
+@app.route("/generator/<sor>/start", methods=["GET", "POST"]) # TODO: make it accept a JSON 
 def avg_make(sor):
     ID = naming_convention(sor)
     executor.submit_stored(sor, main, True, ID, sor)

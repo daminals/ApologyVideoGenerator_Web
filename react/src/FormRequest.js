@@ -25,7 +25,7 @@ export default function FormRequest({setLink}) {
         const name = sorRef.current.value
         if (name === '') return
         var conv_name = js_naming_convention(name);
-        axios.post("/generator/"+name+"/start");
+        axios.post("/generator/"+name+"/start"); // TODO: make this post a JSON
         sorRef.current.value = null;
         setLink("/generator/"+conv_name+'/get');
         var cookie_id = cookieID();
