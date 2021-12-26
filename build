@@ -51,7 +51,7 @@ if (source venv/bin/activate) ; then
 	bannerColor "Venv Activated..." "blue" "*"
 
 else 
-	python -m venv venv 
+	python3 -m venv venv 
 	source venv/bin/activate
 	pip install -r requirements.txt
 	cd ..
@@ -60,4 +60,4 @@ fi
 
 bannerColor "Starting Web Server" "green" "*"
 
-gunicorn -b 0.0.0.0:8080 app:app
+gunicorn --workers 5 -b 0.0.0.0:25566 app:app

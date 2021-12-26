@@ -265,7 +265,7 @@ dmypy.json
 
 Finished/*
 Temp-Files/*
-
+.history
 !Finished/.gitkeep
 !Temp-Files/.gitkeep
 react/package-lock.json

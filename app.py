@@ -53,3 +53,6 @@ def avg_get(sor):
 @app.route("/loading", methods=['GET'])
 def loading_screen():
     return send_file('Assets/loading/ytload.mp4')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=25566)
